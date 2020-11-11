@@ -1,2 +1,2 @@
 web: rails s
-worker: bundle exec sidekiq -q default -q mailers
+worker: bundle exec sidekiq -e production -C config/sidekiq.yml
