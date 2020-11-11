@@ -1,0 +1,65 @@
+<div class="ui column grid  poll-col">
+    
+    <div class="sixteen wide  column">
+        <div class="ui   poll-seg " >
+           
+            <%= form_for @poll, html: {class:"ui form poll-field"} do |f| %>
+                <h4 class="ui dividing header">Poll Information</h4>
+                <div class="sixteen wide field">
+                    <%= f.text_field :title, placeholder: "Title" %>
+                </div>
+                <div class="sixteen wide field">
+                    <%= f.text_area :description, placeholder: "Description", rows: "2" %>                     
+                </div>
+
+               
+                
+             
+                
+                <div class="field">
+                   
+                    <%= f.submit "Create Poll", class: "ui floated button poll-but", tabindex: "0"%>
+                </div>
+               
+                
+            
+                
+                
+                        
+            <% end %>
+
+        
+        </div>  
+    </div>
+           
+
+</div>
+
+
+<script>
+$('.ui .form').on('click', '.remove-fields', function(event) {
+  console.log('clicked')
+    $(this).prev('input[type=hidden]').val('1');
+    $(this).closest('.field .fieldset').hide();
+    return event.preventDefault();
+  });
+
+
+$('.ui .form').on('click', '.add_fields', function(event){
+  console.log("clicked")
+  var regexp, time;
+  time = new Date().getTime();
+  regexp = new RegExp($(this).data('id'), 'g');
+  $(this).before($(this).data('fields').replace(regexp, time));
+  return event.preventDefault();
+})
+
+$('.ui.form')
+  .form({
+    fields: {
+      "poll[title]" : 'empty',
+      "poll[description]" : 'empty'
+    }
+  })
+;
+</script>

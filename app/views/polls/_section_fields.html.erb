@@ -1,0 +1,18 @@
+
+<div class="field poll-child fieldset">
+    
+    <%= option.label :title %> 
+    <div class="two fields">    
+        <div class="sixteen wide field">
+            <%= option.text_field :title, placeholder: "Description", rows: "1" %>
+        </div>
+        <div class="one wide field">
+            <%= option.hidden_field :_destroy %>
+            <%= link_to "#", class: "ui icon button remove-fields"  do %>
+                <i class="trash alternate icon"></i>
+            <% end %>
+        </div>
+    </div>
+    
+</div>
+

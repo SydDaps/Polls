@@ -1,0 +1,41 @@
+<div class="ui three column grid poll-col-new">
+    <div class="two wide column"></div>
+    <div class="twelve wide column">
+        <div class="ui segment">
+           
+                <%= form_for @organizer, html: {class:"ui form error poll-field"} do |f| %>
+                    <% if @organizer.errors.any? %>
+
+                
+                    <div class="ui error message">
+                        <ul class="list">
+                        <% @organizer.errors.messages.each do |field, msg| %>
+                            <li><%= "#{field} #{msg.first}" %> </li>
+                        <% end %>
+                        </ul>
+                    </div>
+                       
+
+                    <% end %>
+                    <h4 class="ui dividing header">Organiser Information</h4>
+                    <div class="two fields">
+                    <div class="field">
+                         <%= f.text_field :name, placeholder: "Name" %>
+                    </div>
+                    <div class="field">
+                        <%= f.text_field :email, placeholder: "Email" %>
+                    </div>
+                    </div>
+                    <%= f.submit "Create", class: "ui button poll-but", tabindex: "0"%>
+
+                    <div class="ui center aligned grid ">
+                        <div class="column">
+                            <%= link_to 'Already an organizer? Enter access code',  new_session_path, class: "" %>
+                        </div>
+                    </div>
+                   
+                <% end %>
+        </div>  
+           
+    <div class="two wide column"></div>
+</div>

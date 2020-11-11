@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  <P>You have access to a poll by <%= @poll.organizer.name %></P>
+    <p>
+        Poll details<br>
+        ============================
+        </p>
+        <p>Title: <%= @poll.title %></p>        
+        <p>link to vote : http://localhost:5000/voters/<%= @voter.id %>/votes/new
+        <p>
+        <br>
+        -=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+    </p>
+  </body>
+</html>

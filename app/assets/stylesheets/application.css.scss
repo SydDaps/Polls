@@ -1,0 +1,109 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ 
+ @import "semantic-ui";
+ @import "semantic-ui/collections/menu";
+
+ html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+.landing {
+    height: 93% !important;
+}
+
+.flash-seg {
+    padding-top: 20px !important;
+}
+.nav {
+    background-color: white;
+    padding: 5px 0 5px;
+    height: 5%;
+}
+
+.pusher {
+    width: 80% !important;
+    overflow: auto;
+    
+}
+
+.landing-side {
+    
+    height: 95%;
+}
+
+.poll-container {
+    background-color: #e9ecef;
+    height: 100%;
+}
+
+.hun-heigh {
+    height: 100%;
+}
+
+hr.style-five {
+    border: 0;
+    height: 0; /* Firefox... */
+    box-shadow: 0 0 10px 1px black;
+}
+hr.style-five:after {  /* Not really supposed to work, but does */
+    content: "\00a0";  /* Prevent margin collapse */
+}
+
+.side-container {
+padding-right: 0px;
+}
+
+.active-dot {
+    height: 10px;
+    width: 10px;
+    margin-right: 20px;
+    background-color: #2c6e49;
+    border-radius: 50%;
+    display: inline-block;
+    visibility: hidden;
+  }
+
+  #clockdiv {
+    font-family: sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
+    }
+    
+    #clockdiv > div{
+    padding: 10px;
+    border-radius: 3px;
+    background: #00BF96;
+    display: inline-block;
+    }
+    
+    #clockdiv div > span{
+    padding: 15px;
+    border-radius: 3px;
+    background: #00816A;
+    display: inline-block;
+    }
+    
+    .smalltext{
+    padding-top: 5px;
+    font-size: 16px;
+    }
+    
+

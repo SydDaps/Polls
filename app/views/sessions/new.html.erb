@@ -1,0 +1,27 @@
+<div class="ui three column grid poll-col">
+    <div class="two wide column"></div>
+    <div class="twelve wide column">
+        <div class="ui segment">
+           
+                <%= form_for :organizer, :url => sessions_path, html: {class:"ui form poll-field"} do |f| %>
+                    <h4 class="ui dividing header">Organizer Information</h4>
+                    
+                    <div class="field">
+                        <%= f.text_field :access_token, placeholder: "Access token" %>
+                    </div>
+                    
+                    <%= f.submit "Access Polls", class: "ui button poll-but", tabindex: "0"%>
+
+                    <div class="ui center aligned grid ">
+                        <div class="column">
+                            <%= link_to 'Resend access token', new_organizer_path, class: "" %>
+                        </div>
+                    </div> 
+                <% end %>
+                
+                        
+                
+        </div>  
+           
+    <div class="two wide column"></div>
+</div>

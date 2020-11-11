@@ -1,0 +1,114 @@
+
+<div class="ui grid hun-heigh">
+  <div class="three wide column poll-container">
+    <div class="side-container" style="padding-left:10px;">
+
+      <% current_organizer.polls.each_with_index do |poll,index|%>
+
+        <button class="fluid ui inverted huge black basic submit button" style="margin-bottom: 10px">
+          <%= link_to "#{poll.title}", poll_path(poll), class: "land-link", id: "#{index}" %>
+        </button>
+        
+        
+       
+
+      <% end %>
+
+      <div class="ui center aligned container">
+        <%= link_to new_poll_path, class: "land-link"  do  %>
+        <i class="plus circle icon"></i>NewPoll
+        <% end %>
+      </div>
+         
+    </div>
+    
+      
+  </div>
+  <div class="thirteen wide column poll-seg" style="background:#fafafa;">
+    <%= render 'layouts/flash' unless flash.empty? %>
+    <div class="ui basic segment poll-seg">
+      <%= yield %>
+    </div>
+    
+  </div>
+ 
+</div>
+
+<script>
+$('.ui .mini').hover(
+  function(){
+    $(this).removeClass('blue');
+    $(this).addClass('green');
+    },
+  function(){
+    $(this).removeClass('green');
+    $(this).addClass('blue');
+  }
+);
+
+$('.ui .land-link').on("click", 
+    function(){
+    var id = $(this).attr('id')
+    sessionStorage.setItem("activePollId", id);
+
+  }
+);
+
+$(document).on('turbolinks:load', function(){
+  $('.ui #progress').progress();
+
+  var activePollId = sessionStorage.getItem("activePollId");
+  
+  $(`#${activePollId}.active-dot`).css({"visibility": "visible"});
+  sessionStorage.setItem("activePollId", null);
+
+  function getTimeRemaining(endtime) {
+  const total = Date.parse(endtime) - Date.parse(new Date());
+  const seconds = Math.floor((total / 1000) % 60);
+  const minutes = Math.floor((total / 1000 / 60) % 60);
+  const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+  const days = Math.floor(total / (1000 * 60 * 60 * 24));
+  
+  return {
+    total,
+    days,
+    hours,
+    minutes,
+    seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  const clock = document.getElementById(id);
+  const daysSpan = clock.querySelector('.days');
+  const hoursSpan = clock.querySelector('.hours');
+  const minutesSpan = clock.querySelector('.minutes');
+  const secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    const t = getTimeRemaining(endtime);
+
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  const timeinterval = setInterval(updateClock, 1000);
+}
+
+<% if @poll.start_at > DateTime.now %>
+  const deadline = new Date("<%= @poll.start_at %>");
+<% else %>
+  const deadline = new Date("<%= @poll.end_at %>");
+<% end %>
+initializeClock('clockdiv', deadline);
+})
+
+
+</script>

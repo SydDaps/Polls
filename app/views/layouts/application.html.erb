@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Poll</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body>
+      <%= render 'layouts/nav' %>
+      <% if has_access? %>
+        <div class="ui fluid container landing-side">
+          <%= render 'layouts/sidebar' %> 
+        </div>
+      <% else %>
+        <%= render 'layouts/flash' unless flash.empty? %>
+        <div class="landing" style="background:#fafafa;overflow-x:hidden;">
+          <%= yield %>
+        </div>
+      <% end %>
+    
+    
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<% if @poll.start_at > DateTime.now %>
+  <div class="ui three column grid">
+    <div class="three wide column ">
+    </div>
+    <div class="ten wide column">
+      <div class="ui huge header">
+        <%= @poll.title %>
+      </div>
+      <p style="font-size:large; padding-left:10px;"><%= @poll.description %></p>
+    </div>
+    <div class="three wide column "></div>
+  </div>
+
+  
+
+  <div class="ui divider"></div>
+  <div style="margin-top:100px">
+  <%= render "time_left_start", poll: @poll%>
+  </div>
+  
+
+<% else %>
+
+  <div class="ui three column grid">
+    <div class="three wide column ">
+    </div>
+    <div class="ten wide column"> 
+      <div class="ui huge header">
+          <%= @poll.title %>
+        </div>
+        <p style="font-size:large; padding-left:10px;"><%= @poll.description %></p>
+
+        <div class="ui divider"></div>
+
+        <%= form_for [@voter, @vote], html: {class:"ui form"} do |f| %>
+          <% @sections.each_with_index do |section, i| %>
+          <div class="ui huge header section" style="margin-top:20px;padding-left:20px;">
+            <h2><%= "#{i + 1}. #{section.description}" %></h2>
+          </div>
+            <% section.options.each_with_index do |option| %>
+            <div class="ui fluid link raised card">
+            
+            
+              <div class="ui segment" style="padding:20px">
+              <div class="ui checkbox" id= <%= "option#{i}" %>>
+                <%= f.check_box :option_id, {multiple: true}, "#{option.id}|#{section.id}|#{@poll.id}", false %>
+                <%= f.label :option_id, "#{option.title}", style:"font-size:large" %>
+              </div>
+              </div>
+            
+            </div>
+              
+              
+            <% end %>
+          <% end %>
+
+        <%= f.submit "Submit Vote",  class: "ui huge fluid submit button", style: "background-color: #abc4ff" %> 
+
+        <% end %>
+          
+        
+        
+
+
+    </div>
+    <div class="three wide column">
+    </div>
+  </div>
+
+  <div class="ui divider"></div>
+
+  <%= render "time_left_end", poll: @poll%>
+<% end %>
+    
+
+
+    
+
+
+<script>
+$('.ui .checkbox').checkbox({beforeChecked: function() {     
+    current_checked  = $(this).closest('.checkbox').attr('id')
+    jQuery(".ui #"+ current_checked).checkbox('uncheck')
+  }})
+</script>

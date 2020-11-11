@@ -1,0 +1,24 @@
+<div class="ui modal">
+  <div class="header">New Section</div>
+  <div class="scrolling content">
+      <%= form_for section, html: {class:"ui form"} do |form| %>
+                <h4 class="ui dividing header">Section Information</h4>
+                <div class="sixteen wide field">
+                    <%= form.text_area :description, placeholder: "Description", rows: "2" %>                     
+                </div>
+
+               <h5 class="ui dividing header">Options</h5>
+                <%= form.fields_for :options do |f| %>
+                  <%= render "option_fields", :f => f %>
+                <% end %>
+                <%= form.hidden_field :poll_id, :value => @poll.id %>
+             
+                
+                <div class="field">
+                    <%= link_to_add_fields("Add option", form, :options, "ui right icon button") %>
+                    <%= form.submit "Create Section", class: "ui floated button poll-but", tabindex: "0"%>
+                </div>
+                                       
+            <% end %>
+  </div>
+</div>

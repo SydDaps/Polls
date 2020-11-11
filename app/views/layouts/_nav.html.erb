@@ -1,0 +1,25 @@
+
+
+
+  <div class="ui  secondary  menu nav">
+  
+  <div class=" ui  container ">
+    
+    <%= link_to 'Home', root_path, class: "ui item" %>
+    <div class="right menu">
+      
+      <%= link_to 'Polls', new_session_path, class: "ui item" %>
+    
+      <a class="ui item">
+        Results
+      </a>
+
+      <% if has_access? %>
+        <%= link_to "Logout", session_path, method: :delete, class: "ui item" %>
+      <% end %>
+    </div>
+  </div>
+
+  </div>
+  
+

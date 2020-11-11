@@ -1,0 +1,52 @@
+// Place all the styles related to the polls controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "semantic-ui";
+@import "semantic-ui/collections/menu";
+
+.poll-col {
+    padding-top: 2.5% !important;
+    height: 100%;
+}
+
+.poll-col-new {
+    padding: 10px 10px !important;
+    height: 80%;
+}
+
+.poll-seg {
+    height: 100%;
+    overflow: auto;
+}
+
+.poll-field {
+    padding: 0 15px 15px 15px;  
+}
+
+
+h4 {
+    font-size: 10px;
+}
+
+.poll-but {
+    background-color: #abc4ff !important;
+}
+
+.poll-but:hover {
+    background-color: #979dac !important;
+  }
+
+.poll-child {
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.poll-opt {
+    padding-left:40px ;
+    
+}
+
+.ui.huge.header {
+    font-size: xxx-large !important;
+    
+}

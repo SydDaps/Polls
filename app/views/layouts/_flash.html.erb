@@ -1,0 +1,13 @@
+
+<div class="ui three column grid flash-seg">
+    <div class="two wide column"></div>
+    <div class="twelve wide column">     
+       <% flash.each do |type, msg| %>
+        <div class="ui <%= type %> message">
+          <i class="close icon"></i>
+          <p><%= msg %></p>
+        </div>
+        <% end %>    
+    </div>           
+    <div class="two wide column"></div>
+</div>

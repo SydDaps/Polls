@@ -1,0 +1,49 @@
+<button class="ui icon huge fluid button addsection" style="margin-top:10px">
+  Add Section
+  <i class="plus icon"></i>
+</button>
+<div class="ui divider" style=""></div>
+
+<div class="ui container">  
+  <div class="ui huge header center aligned container">
+    <h1> Sections </h1>
+  </div>
+
+
+  <%unless poll.sections.all.empty? %>
+    <div class="ui fitted divider" style="margin-bottom:10px;"></div>
+    <% poll.sections.all.each_with_index do |section, i| %>
+    <div class="ui huge header" style="margin-top:30px;padding-left:100px;">
+        <h2><%= "#{i + 1}. #{section.description}" %></h2>
+    </div>
+     
+
+      <div class="ui center aligned container">
+
+          <% section.options.all.each do |option| %>
+
+            <div class="ui three column grid">
+
+                <div class="four wide column"></div>
+
+                <div class="eight wide column">
+                    <div class="ui big message">
+                    <p style="padding: 10px 0px 0px 20px;"><%= option.title %></p>
+                    </div>
+                
+                </div>
+
+                <div class="four wide column"></div>
+                
+            </div>
+    
+          <% end %>
+      </div>
+    
+    <% end %>
+  <% end %>
+
+  
+</div>
+
+

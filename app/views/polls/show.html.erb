@@ -1,0 +1,84 @@
+
+<div class="ui huge header">
+  <%= @poll.title %>
+</div>
+<p style="font-size:large; padding-left:10px;"><%= @poll.description %></p>
+
+<div class="ui divider"></div>
+
+<%= render "new_section", section: @section%>
+
+<%= render "sections", poll: @poll%>
+
+<div class="ui divider"></div>
+<div class="ui container segment">
+
+<%= form_for @poll , html: {class:"ui form"} do |f| %>
+  <div class="three fields">
+    <div class="field">
+      <%= f.label :"Voters Csv"%>
+      <%= f.file_field :voters_csv, accept: ".csv"%>
+    </div>
+    <div class="field">
+      <%= f.label :"Voting start"%>
+      <%= f.datetime_field :start_at%>
+      
+    </div>
+    <div class="field">
+       <%= f.label :"Voting end"%>
+      <%= f.datetime_field :end_at%>
+    </div>
+  </div>
+  
+  <%= f.submit "start Poll",  class: "ui huge fluid submit button", style: "background-color: #abc4ff" %> 
+  
+<% end %>
+
+</div>
+<div class="ui divider"></div>
+
+<script>
+$('.ui .form').on('click', '.remove-fields', function(event) {
+  console.log('clicked')
+    $(this).prev('input[type=hidden]').val('1');
+    $(this).closest('.field .fieldset').hide();
+    return event.preventDefault();
+  });
+
+
+$('.ui .form').on('click', '.add_fields', function(event){
+  console.log("clicked")
+  var regexp, time;
+  time = new Date().getTime();
+  regexp = new RegExp($(this).data('id'), 'g');
+  $(this).before($(this).data('fields').replace(regexp, time));
+  return event.preventDefault();
+})
+
+
+$('.ui.button.addsection').on('click', function(){
+console.log('clicked')
+$('.ui.modal')
+  .modal('setting', 'closable', false)
+  .modal('show')
+;
+});
+
+
+
+$('.ui.form')
+  .form({
+    fields: {
+      "poll[start_at]" : 'empty',
+      "poll[end_at]" : 'empty',
+      "poll[voters_csv]" : 'empty'
+
+      
+    }
+  })
+;
+
+</script>
+
+
+

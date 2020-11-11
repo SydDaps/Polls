@@ -1,0 +1,36 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "semantic-ui";
+ @import "semantic-ui/collections/menu";
+
+
+.landing-c1 {
+    padding: 220px 0 0 100px !important;
+}
+.landing-c2 {
+    height: 600px;
+    padding-top: 50px !important;
+}
+
+.land-img {
+    height: 100%;
+}
+
+.land-b-r {
+    margin-left: 5px !important;
+    
+}
+
+.land-b-l {
+    margin-right: 5px !important;
+    background-color: #abc4ff !important;
+}
+
+.land-b-l:hover, .land-b-r:hover {
+    background-color: #979dac !important;
+  }
+
+.land-link, .land-link:hover {
+    color: black ;
+}
