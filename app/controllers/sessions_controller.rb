@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
     def new
         if has_access?
-            redirect_to polls_path
+            redirect_to new_poll_path
         end
         @organizer = Organizer.new
     end
