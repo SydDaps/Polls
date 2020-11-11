@@ -111,8 +111,8 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   config.action_mailer.delivery_method = :smtp
-  host = 'example.com' #replace with your own url
-  config.action_mailer.default_url_options = { host: host }
+  host = 'pila-polls.herokuapp.com' #replace with your own url
+  config.action_mailer.default_url_options = { host: host , protocol: 'http'}
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
