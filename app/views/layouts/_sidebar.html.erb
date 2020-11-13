@@ -1,8 +1,13 @@
 
 <div class="ui grid hun-heigh">
-  <div class="three wide column poll-container">
+  <div class="three wide column poll-container poll-seg">
     <div class="side-container" style="padding-left:10px;">
-
+      <div class="ui center aligned container">
+        <%= link_to new_poll_path, class: "land-link"  do  %>
+        <i class="plus circle icon"></i>NewPoll
+        <% end %>
+      </div>
+      <div class="ui divider"></div>
       <% current_organizer.polls.each_with_index do |poll,index|%>
 
         <button class="fluid ui inverted huge black basic submit button" style="margin-bottom: 10px">
@@ -14,11 +19,7 @@
 
       <% end %>
 
-      <div class="ui center aligned container">
-        <%= link_to new_poll_path, class: "land-link"  do  %>
-        <i class="plus circle icon"></i>NewPoll
-        <% end %>
-      </div>
+      
          
     </div>
     
