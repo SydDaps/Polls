@@ -102,7 +102,13 @@ function initializeClock(id, endtime) {
   const timeinterval = setInterval(updateClock, 1000);
 }
 
- 
+<% if @poll.start_at %>
+  <% if @poll.start_at > DateTime.now %>
+  const deadline = new Date("<%= @poll.start_at %>".replace(/-/g, '/'));
+  <% else %>
+  const deadline = new Date("<%= @poll.end_at %>".replace(/-/g, '/'));
+  <% end %>
+<% end %>
 
 initializeClock('clockdiv', deadline);
 })

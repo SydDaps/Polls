@@ -60,12 +60,12 @@ function initializeClock(id, endtime) {
       clearInterval(timeinterval);
     }
   }
-
+  
   updateClock();
   const timeinterval = setInterval(updateClock, 1000);
 }
 
-const deadline = new Date("<%= @poll.start_at %>");
+const deadline = new Date("<%= @poll.start_at %>".replace(/-/g, '/'));
 initializeClock('clockdiv', deadline);
 
 </script>

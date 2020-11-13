@@ -70,7 +70,7 @@ function initializeClock(id, endtime) {
   const timeinterval = setInterval(updateClock, 1000);
 }
 
-const deadline = new Date("<%= @poll.end_at %>");
+const deadline = new Date("<%= @poll.end_at %>".replace(/-/g, '/'));
 initializeClock('clockdiv', deadline);
 
 </script>
