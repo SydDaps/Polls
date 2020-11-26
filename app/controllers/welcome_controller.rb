@@ -4,4 +4,8 @@ class WelcomeController < ApplicationController
       redirect_to new_poll_path
     end
   end
+
+  def how_it_works
+
+  end
 end

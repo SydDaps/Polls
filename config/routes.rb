@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'votes/index'
   get 'votes/new'
   get 'welcome/index' => 'welcome#index'
+  get 'welcome/how-it-works' =>  'welcome#how_it_works'
 
   delete "/session", to: "sessions#destroy"
   
