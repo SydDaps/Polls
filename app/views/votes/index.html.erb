@@ -42,6 +42,7 @@
             </div>
         <% section.second[:options].each do |option|%>
             <% percentage = (option.second / section.second[:total_section_votes]) * 100  %>
+            <% percentage = 0 if percentage.nan? %>
             <% colours = ["teal","red","orange","yellow","olive","blue","violet","purple","pink","brown"]%>
             <% if section.second[:max_vote] == option.second %>
                 <%colour = "green"%>
@@ -60,7 +61,7 @@
                     </div>
                     <div class="right floated right aligned eight wide column">
                         <div class="label" style="font-size:large;">
-                        <%= percentage.round(2) %>%
+                        <%= percentage.round(2)  %>%
                         </div>
                     </div>
                 </div>

@@ -26,10 +26,18 @@ class VotesController < ApplicationController
   end
 
   def new
+
     
     @vote = Vote.new()
     @voter = Voter.find(params[:voter_id])
     @poll = @voter.poll
+    
+    if @poll.end_at < DateTime.now
+      redirect_to poll_votes_path(@voter.poll)
+      return
+    end
+        
+
     unless @voter.voted_at 
       @sections = @poll.sections
     else
@@ -46,6 +54,11 @@ class VotesController < ApplicationController
     @voter = Voter.find(params[:voter_id])
     total_sections = @voter.poll.sections.count
     
+    if @voter.voted_at
+      redirect_to poll_votes_path(@voter.poll)
+      return
+    end
+
     if votes_param[:option_id].count == total_sections
       votes_param[:option_id].each do |opt_sec_poll_id|
         opt_sec_poll_id = opt_sec_poll_id.split('|')
