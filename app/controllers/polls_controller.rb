@@ -42,6 +42,8 @@ class PollsController < ApplicationController
       end
       
       CreateVotersJob.perform_later(poll: @poll, emails: @emails)
+      puts "---------"
+      puts @emails
       redirect_to @poll
     else
       redirect_to poll_path(@poll)
